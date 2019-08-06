@@ -22,11 +22,13 @@ datos$TELEFONO<- sub("^$", 0, datos$TELEFONO)
 ##Temporal contrato 021 =3
 ##temporal nombramiento = 4
 ##temporal titulos = 5
-datos$Estatus_num <- ifelse(grepl("ABIERTA",datos$STATUS),"1","0")
-datos$Estatus_num <- ifelse(grepl("CERRADA TEMPORALMENTE",datos$STATUS),"2",datos$Estatus_num)
-datos$Estatus_num <- ifelse(grepl("TEMPORAL CONTRATO 021",datos$STATUS),"3",datos$Estatus_num)
-datos$Estatus_num <- ifelse(grepl("TEMPORAL NOMBRAMIENTO",datos$STATUS),"4",datos$Estatus_num)
-datos$Estatus_num <- ifelse(grepl("TEMPORAL TITULOS",datos$STATUS),"5",datos$Estatus_num)
+datos$STATUS <- as.character(datos$STATUS)
+datos$STATUS[datos$STATUS == "Abierta"] <- 1
+datos$STATUS[datos$STATUS == "CERRADA TEMPORALMENTE"] <- 2
+datos$STATUS[datos$STATUS == "TEMPORAL CONTRATO 021"] <- 3
+datos$STATUS[datos$STATUS == "TEMPORAL NOMBRAMIENTO"] <- 4
+datos$STATUS[datos$STATUS == "TEMPORAL TITULOS"] <- 5
+datos$STATUS<- factor(datos$STATUS)
 
 ##departamentos a numeros 
 datos$DEPARTAMENTO <- as.character(datos$DEPARTAMENTO)
@@ -55,8 +57,7 @@ datos$DEPARTAMENTO[datos$DEPARTAMENTO =="JALAPA"] <- 21
 datos$DEPARTAMENTO[datos$DEPARTAMENTO =="JUTIAPA"] <- 22
 datos$DEPARTAMENTO <- factor(datos$DEPARTAMENTO)
 
-
-
+# Municipios a codigos
 datos$MUNICIPIO <- as.character(datos$MUNICIPIO)
 datos$MUNICIPIO[datos$MUNICIPIO == "GUATEMALA"] <-0101
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA CATARINA PINULA"] <-0102
