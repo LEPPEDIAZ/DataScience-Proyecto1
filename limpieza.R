@@ -51,5 +51,8 @@ datos$DEPARTAMENTO_NUM <- ifelse(grepl("CHIQUIMULA",datos$DEPARTAMENTO),20,datos
 datos$DEPARTAMENTO_NUM <- ifelse(grepl("JALAPA",datos$DEPARTAMENTO),21,datos$DEPARTAMENTO_NUM)
 datos$DEPARTAMENTO_NUM <- ifelse(grepl("JUTIAPA",datos$DEPARTAMENTO),22,datos$DEPARTAMENTO_NUM)
 
-
+datos <- read.csv("unity.csv")
+install.packages("tidyverse")
+duplicated(datos)
+unique(datos)
 
