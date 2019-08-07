@@ -448,6 +448,7 @@ datos$MUNICIPIO[datos$MUNICIPIO == "ZONA 9"] <- 2445
 
 
 datos$MUNICIPIO <- factor(datos$MUNICIPIO)
+datos$DEPARTAMENTAL <- NULL
 
 ##Eliminacion de duplicados
 datos <- read.csv("unity.csv")
@@ -455,5 +456,5 @@ install.packages("tidyverse")
 duplicated(datos)
 unique(datos)
 
-
+write.csv(datos,"./clean.csv", row.names = TRUE)
 
