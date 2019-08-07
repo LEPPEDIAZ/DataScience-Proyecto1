@@ -1,4 +1,4 @@
-#setwd("C:/Users/jazmi/Downloads")
+setwd("C:/Users/Usuario Dell/Desktop/S8/Data Science/DataScience-Proyecto1")
 datos <- read.csv("./data/unity.csv")
 
 ##Debido a que en su momento se descargaron todos los datos
@@ -451,10 +451,8 @@ datos$MUNICIPIO <- factor(datos$MUNICIPIO)
 datos$DEPARTAMENTAL <- NULL
 
 ##Eliminacion de duplicados
-datos <- read.csv("./data/unity.csv")
 require("tidyverse")
-newDf <- datos[duplicated(datos),]
-unique(datos)
+new <- distinct(datos, .keep_all = TRUE)
 
-write.csv(newDf,"./data/clean.csv", row.names = TRUE)
+write.csv(new,"./data/cleanData.csv", row.names = TRUE)
 
