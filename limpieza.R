@@ -1,5 +1,8 @@
-setwd("C:/Users/Usuario Dell/Desktop/S8/Data Science/DataScience-Proyecto1")
+setwd("C:/Users/jazmi/Downloads")
 datos <- read.csv("unity.csv")
+
+##Debido a que en su momento se descargaron todos los datos
+##incluidos basicos preprimarias etc, se quitan para dejar solo diversificado
 
 datos <- datos[!grepl("BASICO", datos$NIVEL),]
 datos <-datos[!grepl("PRIMARIA", datos$NIVEL),]
@@ -7,11 +10,9 @@ datos <-datos[!grepl("PREPRIMARIA BILINGUE", datos$NIVEL),]
 datos <-datos[!grepl("PARVULOS", datos$NIVEL),]
 datos <-datos[grepl("DIVERSIFICADO", datos$NIVEL),]
 
+##Para las columnas con filas en blanco, se sustityue el blanco por Nao por 0 
 datos$DISTRITO <- sub("^$", NA, datos$DISTRITO)
-
 datos$DIRECTOR <- sub("^$", NA, datos$DIRECTOR)
-
-
 datos$SUPERVISOR <- sub("^$", NA, datos$SUPERVISOR)
 datos$DIRECCION<- sub("^$", NA, datos$DIRECCION)
 datos$TELEFONO<- sub("^$", 0, datos$TELEFONO)
@@ -30,7 +31,8 @@ datos$STATUS[datos$STATUS == "TEMPORAL NOMBRAMIENTO"] <- 4
 datos$STATUS[datos$STATUS == "TEMPORAL TITULOS"] <- 5
 datos$STATUS<- factor(datos$STATUS)
 
-##departamentos a numeros 
+##departamentos a numeros segun la guia referenciada en el trabajo escrito
+##Esto se hace para poder tener una mejor forma de manjear los datos
 datos$DEPARTAMENTO <- as.character(datos$DEPARTAMENTO)
 datos$DEPARTAMENTO[datos$DEPARTAMENTO == "CIUDAD CAPITAL"] <- 0
 datos$DEPARTAMENTO[datos$DEPARTAMENTO == "GUATEMALA"] <- 1
@@ -57,7 +59,8 @@ datos$DEPARTAMENTO[datos$DEPARTAMENTO =="JALAPA"] <- 21
 datos$DEPARTAMENTO[datos$DEPARTAMENTO =="JUTIAPA"] <- 22
 datos$DEPARTAMENTO <- factor(datos$DEPARTAMENTO)
 
-# Municipios a codigos
+# Municipios a codigos segun la guia referenciada en el trabajo escrito
+##Esto se hace para poder tener una mejor forma de manjear los datos
 datos$MUNICIPIO <- as.character(datos$MUNICIPIO)
 datos$MUNICIPIO[datos$MUNICIPIO == "GUATEMALA"] <-0101
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA CATARINA PINULA"] <-0102
@@ -96,7 +99,7 @@ datos$MUNICIPIO[datos$MUNICIPIO == "SANTA LUCIA MILPAS ALTAS"] <-0309
 datos$MUNICIPIO[datos$MUNICIPIO == "MAGDALENA MILPAS ALTAS"] <-0310
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA MARIA DE JESUS"] <-0311
 datos$MUNICIPIO[datos$MUNICIPIO == "CIUDAD VIEJA"] <-0312
-datos$MUNICIPIO[datos$MUNICIPIO == "SAN MIGUEL DUEÑAS"] <-0313
+datos$MUNICIPIO[datos$MUNICIPIO == "SAN MIGUEL DUE?AS"] <-0313
 datos$MUNICIPIO[datos$MUNICIPIO == "ALOTENANGO"] <-0314
 datos$MUNICIPIO[datos$MUNICIPIO == "SAN ANTONIO AGUAS CALIENTES"] <-0315
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA CATARINA BARAHONA"] <-0316
@@ -141,7 +144,7 @@ datos$MUNICIPIO[datos$MUNICIPIO == "TAXISCO"] <-0609
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA MARIA IXHUATAN"] <-0610
 datos$MUNICIPIO[datos$MUNICIPIO == "GUAZACAPAN"] <-0611
 datos$MUNICIPIO[datos$MUNICIPIO == "SANTA CRUZ NARANJO"] <-0612
-datos$MUNICIPIO[datos$MUNICIPIO == "PUEBLO NUEVO VIÑAS"] <-0613
+datos$MUNICIPIO[datos$MUNICIPIO == "PUEBLO NUEVO VI?AS"] <-0613
 datos$MUNICIPIO[datos$MUNICIPIO == "NUEVA SANTA ROSA"] <-0614
 datos$MUNICIPIO[datos$MUNICIPIO == "SOLOLA"] <-0701
 datos$MUNICIPIO[datos$MUNICIPIO == "SAN JOSE CHACAYA"] <-0702
@@ -357,7 +360,7 @@ datos$MUNICIPIO[datos$MUNICIPIO == "RIO HONDO"] <-1903
 datos$MUNICIPIO[datos$MUNICIPIO == "GUALAN"] <-1904
 datos$MUNICIPIO[datos$MUNICIPIO == "TECULUTAN"] <-1905
 datos$MUNICIPIO[datos$MUNICIPIO == "USUMATLAN"] <-1906
-datos$MUNICIPIO[datos$MUNICIPIO == "CABAÑAS"] <-1907
+datos$MUNICIPIO[datos$MUNICIPIO == "CABA?AS"] <-1907
 datos$MUNICIPIO[datos$MUNICIPIO == "SAN DIEGO"] <-1908
 datos$MUNICIPIO[datos$MUNICIPIO == "LA UNION"] <-1909
 datos$MUNICIPIO[datos$MUNICIPIO == "HUITE"] <-1910
@@ -443,12 +446,14 @@ datos$MUNICIPIO[datos$MUNICIPIO == "ZONA 7"] <- 2443
 datos$MUNICIPIO[datos$MUNICIPIO == "ZONA 8"] <- 2444
 datos$MUNICIPIO[datos$MUNICIPIO == "ZONA 9"] <- 2445
 
+
 datos$MUNICIPIO <- factor(datos$MUNICIPIO)
 
-
+##Eliminacion de duplicados
 datos <- read.csv("unity.csv")
 install.packages("tidyverse")
 duplicated(datos)
 unique(datos)
+
 
 
