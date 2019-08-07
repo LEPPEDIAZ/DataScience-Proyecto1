@@ -21,17 +21,9 @@ ___
 6. Correr el archivo "limpieza.R", este generara uno nuevo con la limpieza necesaria.
 
 
-Developed by:
+**Desarrollado por:**
 
-Jorge Azmitia
-
-Ana Lucia Leppe
-
-Yasmin Chavez
-
-Cristian Perez
-
-Marlon Fuentes
+Jorge Azmitia - Ana Lucia Leppe - Yasmin Chavez - Cristian Perez - Marlon Fuentes
 
 07/08/2019
 
