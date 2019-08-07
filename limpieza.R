@@ -24,7 +24,7 @@ datos$TELEFONO<- sub("^$", 0, datos$TELEFONO)
 ##temporal nombramiento = 4
 ##temporal titulos = 5
 datos$STATUS <- as.character(datos$STATUS)
-datos$STATUS[datos$STATUS == "Abierta"] <- 1
+datos$STATUS[datos$STATUS == "ABIERTA"] <- 1
 datos$STATUS[datos$STATUS == "CERRADA TEMPORALMENTE"] <- 2
 datos$STATUS[datos$STATUS == "TEMPORAL CONTRATO 021"] <- 3
 datos$STATUS[datos$STATUS == "TEMPORAL NOMBRAMIENTO"] <- 4
@@ -452,9 +452,9 @@ datos$DEPARTAMENTAL <- NULL
 
 ##Eliminacion de duplicados
 datos <- read.csv("unity.csv")
-install.packages("tidyverse")
-duplicated(datos)
+require("tidyverse")
+newDf <- datos[duplicated(datos),]
 unique(datos)
 
-write.csv(datos,"./clean.csv", row.names = TRUE)
+write.csv(newDf,"./clean.csv", row.names = TRUE)
 
